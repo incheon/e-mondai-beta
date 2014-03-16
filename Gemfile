@@ -48,4 +48,5 @@ end
 # Use PostgreSQL
 group :production do
   gem 'pg', '0.12.2', require: false
+  gem 'rails_12factor'
 end
