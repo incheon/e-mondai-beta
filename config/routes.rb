@@ -1,5 +1,8 @@
 EMondaiBeta::Application.routes.draw do
 
+  # resources
+  resources :users
+
   # root
   root "static_pages#home"
   
@@ -10,7 +13,6 @@ EMondaiBeta::Application.routes.draw do
   match 'welcome', to: "static_pages#welcome", via: 'get'
   
   # Users
-  get "users/new"
   match 'signup',  to: "users#new", via: 'get'
 
 end
