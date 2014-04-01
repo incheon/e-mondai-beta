@@ -2,40 +2,32 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  describe "Home page" do
-    it "should have the h1 'e-Mondai'" do
-      visit '/'
-      page.should have_selector('h1', :text => 'e-Mondai beta')
-    end
+  subject { page }
 
-    it "should have the title 'Home'" do
-      visit '/'
-      page.should have_selector('title', :text => "eMondai beta | Home")
-    end
+  describe "Home page" do
+    before {visit root_path}
+
+    it { should have_selector('h1', :text => 'e-Mondai beta') }
+    it { should have_selector('title', :text => full_title('')) }
+    it { should_not have_selector('title', :text => "| Home") }
   end
 
   describe "Help page" do
-    it "should have the h1 'Help'" do
-      visit '/help'
-      page.should have_selector('h1', :text => 'Help')
-    end
-
-    it "should have the title 'Help'" do
-      visit '/help'
-      page.should have_selector('title', :text => "eMondai beta | Help")
-    end
+    before {visit help_path}
+    it { should have_selector('h1', :text => 'Help') }
+    it { should have_selector('title', :text => "| Help") }
   end
 
   describe "About page" do
-    it "should have the h1 'About'" do
-      visit '/about'
-      page.should have_selector('h1', :text => 'About')
-    end
+    before {visit about_path}
+    it { should have_selector('h1', :text => 'About') }
+    it { should have_selector('title', :text => "| About") }
+  end
 
-    it "should have the title 'About'" do
-      visit '/about'
-      page.should have_selector('title', :text => "eMondai beta | About")
-    end
+  describe "Contact page" do
+    before {visit contact_path}
+    it { page.should have_content('Contact') }
+    it { page.should have_selector('title', :text => "| Contact") }
   end
 
 end
