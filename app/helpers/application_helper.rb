@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # サイトのタイトルにページタイトルをつなげたものを返す
   def full_title(page_title)
-    base_title = "自分だけの問題を作って公開 e-Mondai"
+    base_title = "eMondai beta"
     if page_title.empty?
       base_title
     else
