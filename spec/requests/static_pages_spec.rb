@@ -8,9 +8,14 @@ describe "Static pages" do
       page.should have_selector('h1', :text => 'e-Mondai beta')
     end
 
-    it "should have the title 'Home'" do
+    it "should have the base title" do
       visit '/'
-      page.should have_selector('title', :text => "eMondai beta | Home")
+      page.should have_selector('title', :text => "eMondai beta")
+    end
+
+    it "should not have a custom page title" do
+      visit '/'
+      page.should_not have_selector('title', :text => "| Home")
     end
   end
 
